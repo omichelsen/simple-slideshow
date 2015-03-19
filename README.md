@@ -10,7 +10,7 @@ See the __[demo](https://rawgit.com/omichelsen/simple-slideshow/master/demo/demo
 ## Install
 
 ```bash
-$ bower install simple-slideshow --save
+$ npm install simple-slideshow --save
 ```
 
 Include the script and stylesheet in your web page:
