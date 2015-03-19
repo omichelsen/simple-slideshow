@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>simple-slideshow demo</title>
+        <link rel="stylesheet" href="../src/slideshow.css">
+        <style>
+        </style>
+    </head>
+    <body>
+
+        <ul class="slideshow">
+            <li><a href="https://www.flickr.com/photos/olemichelsen/15555225022"><img src="https://farm4.staticflickr.com/3941/15555225022_38ca81e63c_b.jpg" title="Test 1" alt="Description for image 1"></a></li>
+            <li><a href="https://www.flickr.com/photos/olemichelsen/15368756380"><img src="https://farm6.staticflickr.com/5604/15368756380_97b36c63b4_b.jpg" title="Test 2" alt="Description for image 2"></a></li>
+            <li><a href="https://www.flickr.com/photos/olemichelsen/15368371277"><img src="https://farm4.staticflickr.com/3953/15368371277_89bdc3fee1_b.jpg" title="Test 3" alt="Description for image 3"></a></li>
+        </ul>
+
+        <script src="../src/slideshow.js"></script>
+        <script>
+            window.addEventListener('load', function () {
+                var elm = new SlideShow('.slideshow', {timeout: 5000});
+            });
+        </script>
+    </body>
+</html>
