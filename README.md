@@ -5,7 +5,7 @@
 
 Simple slideshow library with no dependencies like jQuery. Uses CSS3 transformations for animation. Compatible with Chrome, Firefox, Safari and IE 9+.
 
-See the [demo](https://rawgit.com/omichelsen/simple-slideshow/master/demo/demo.html).
+See the __[demo](https://rawgit.com/omichelsen/simple-slideshow/master/demo/demo.html)__.
 
 ## Install
 
@@ -25,7 +25,7 @@ Include the script and stylesheet in your web page:
 
 ## Usage
 
-Create a list of images, and the title and alt texts will be used as captions. You can also wrap them in a link to make them clickable.
+Create a list of images, and the `title` and `alt` texts will be used as captions. You can also wrap them in a link to make them clickable.
 
 ```html
 <ul class="slideshow">
