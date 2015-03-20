@@ -19,16 +19,19 @@
             timeout: options && options.timeout || 5000
         };
 
-        var index = 0;
-            elm = document.querySelector(selector);
-            elm.classList.add('slideshow');
-            elm.classList.add('preload');
+        var index = 0, elm = document.querySelector(selector);
+
+        if (!(elm && elm.children.length)) throw new Error('Element not found or no children.');
+
+        // Add slideshow classes
+        elm.classList.add('slideshow');
+        elm.classList.add('preload');
 
         // Create caption elements from image properties
         for (var i = 0; i < elm.children.length; i++) {
             var elmChild = elm.children[i],
                 elmImg = elmChild.querySelector('img');
-            if (elmImg.title) {
+            if (elmImg && elmImg.title) {
                 var elmCaption = createElement('div', 'caption');
                 elmCaption.appendChild(createElement('span', 'title', elmImg.title));
                 elmCaption.appendChild(createElement('span', 'alt', elmImg.alt));

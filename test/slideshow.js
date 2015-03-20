@@ -46,4 +46,13 @@ describe('simple-slideshow', function () {
             done();
         }, options.timeout);
     });
+
+    it('should die violently if no element', function () {
+        expect(function () { new SlideShow('.noElement'); }).toThrow();
+    });
+
+    it('should die violently if no children', function () {
+        document.body.appendChild(createElement('ul', {'class': 'emptyElement'}));
+        expect(function () { new SlideShow('.emptyElement'); }).toThrow();
+    });
 });
