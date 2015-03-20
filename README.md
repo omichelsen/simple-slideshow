@@ -9,8 +9,14 @@ See the __[demo](https://rawgit.com/omichelsen/simple-slideshow/master/demo/demo
 
 ## Install
 
+Available on `npm` or `bower`:
+
 ```bash
 $ npm install simple-slideshow --save
+```
+
+```bash
+$ bower install omichelsen/simple-slideshow --save
 ```
 
 Include the script and stylesheet in your web page:
