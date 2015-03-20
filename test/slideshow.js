@@ -2,24 +2,26 @@ describe('simple-slideshow', function () {
     var elm,
         options = {timeout: 10};
 
-    function createElement(tag, props) {
+    function createElement(tag, props, child) {
         var elm = document.createElement(tag);
         for (var key in props) {
             elm.setAttribute(key, props[key]);
         }
+        if (child) elm.appendChild(child);
         return elm;
     }
 
     beforeEach(function () {
-        var ul = createElement('ul', {'class': 'testshow'}),
-            li0 = createElement('li'),
-            li1 = createElement('li');
-        li0.appendChild(createElement('img', {title: 'Title1', alt: 'Alt1'}));
-        li1.appendChild(createElement('img', {title: 'Title1', alt: 'Alt1'}));
-        ul.appendChild(li0);
-        ul.appendChild(li1);
+        var ul = createElement('ul', {'class': 'testslides'});
+        ul.appendChild(createElement('li', null, createElement('img', {title: 'Title0', alt: 'Alt0'})));
+        ul.appendChild(createElement('li', null, createElement('img', {title: 'Title1', alt: 'Alt1'})));
         document.body.appendChild(ul);
-        elm = new SlideShow('.testshow', options);
+        elm = new SlideShow('.testslides', options);
+    });
+
+    afterEach(function () {
+        elm.parentNode.removeChild(elm);
+        elm = null;
     });
 
     it('should be classy', function () {
