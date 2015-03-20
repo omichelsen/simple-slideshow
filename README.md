@@ -3,7 +3,7 @@
 [![Build Status][travis-image]][travis-url]
 [![Test Coverage][coveralls-image]][coveralls-url]
 
-Simple slideshow library. Does _not_ depend on jQuery. Uses CSS3 transformations for animation. Compatible with Chrome, Firefox, Safari and IE 9+.
+Simple slideshow library. Does _not_ depend on jQuery. Uses CSS3 transformations for animation. Compatible with Chrome, Firefox, Safari and IE 10+.
 
 See the __[demo](https://rawgit.com/omichelsen/simple-slideshow/master/demo/demo.html)__.
 
