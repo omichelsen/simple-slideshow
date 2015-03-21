@@ -19,18 +19,27 @@
             timeout: options && options.timeout || 5000
         };
 
-        var index = 0, elm = document.querySelector(selector);
-
-        if (!(elm && elm.children.length)) throw new Error('Element not found or no children.');
+        var elm = document.querySelector(selector);
+        if (!(elm && elm.children.length)) {
+            throw new Error('Element not found or no children.');
+        }
 
         // Add slideshow classes
         elm.classList.add('slideshow');
         elm.classList.add('preload');
 
+        // Set the dimensions of the container
+        var elmImg = elm.querySelector('img');
+        console.log(elmImg.clientWidth, elmImg.clientHeight);
+        elm.style.height = elmImg.clientHeight + 'px';
+        window.addEventListener('resize', function () {
+            elm.style.height = elmImg.clientHeight + 'px';
+        });
+
         // Create caption elements from image properties
         for (var i = 0; i < elm.children.length; i++) {
-            var elmChild = elm.children[i],
-                elmImg = elmChild.querySelector('img');
+            var elmChild = elm.children[i];
+            elmImg = elmChild.querySelector('img');
             if (elmImg && elmImg.title) {
                 var elmCaption = createElement('div', 'caption');
                 elmCaption.appendChild(createElement('span', 'title', elmImg.title));
@@ -48,6 +57,7 @@
         });
 
         // Start the slidehshow
+        var index = 0;
         setInterval(function () {
             elm.children[index].classList.remove('show-animation');
             index = (index + 1) % elm.children.length;

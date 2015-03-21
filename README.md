@@ -49,19 +49,6 @@ var elm = new SlideShow('.slideshow', {timeout: 5000});
 
 The optional setting `timeout` defines how many miliseconds to wait between slides.
 
-### Styling
-
-You should set a default size for the slideshow that matches your images. You can do this in CSS:
-
-```html
-<style>
-    .slideshow {
-        width: 1024px;
-        height: 768px;
-    }
-</style>
-```
-
 [travis-image]: https://img.shields.io/travis/omichelsen/simple-slideshow/master.svg
 [travis-url]: https://travis-ci.org/omichelsen/simple-slideshow
 [coveralls-image]: https://img.shields.io/coveralls/omichelsen/simple-slideshow/master.svg
