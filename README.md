@@ -44,8 +44,10 @@ Create a list of images, and the `title` and `alt` texts will be used as caption
 Initialize the slideshow:
 
 ```javascript
-var elm = new SlideShow('.slideshow');
+var elm = new SlideShow('.slideshow', {timeout: 5000});
 ```
+
+The optional setting `timeout` defines how many miliseconds to wait between slides.
 
 ### Styling
 
