@@ -30,7 +30,6 @@
 
         // Set the dimensions of the container
         var elmImg = elm.querySelector('img');
-        console.log(elmImg.clientWidth, elmImg.clientHeight);
         elm.style.height = elmImg.clientHeight + 'px';
         window.addEventListener('resize', function () {
             elm.style.height = elmImg.clientHeight + 'px';
