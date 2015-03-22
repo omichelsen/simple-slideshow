@@ -28,12 +28,13 @@
         elm.classList.add('slideshow');
         elm.classList.add('preload');
 
-        // Set the dimensions of the container
+        // Set the dimensions of the container based on image size
         var elmImg = elm.querySelector('img');
-        elm.style.height = elmImg.clientHeight + 'px';
-        window.addEventListener('resize', function () {
+        var doResize = function () {
             elm.style.height = elmImg.clientHeight + 'px';
-        });
+        };
+        doResize();
+        window.addEventListener('resize', doResize);
 
         // Create caption elements from image properties
         for (var i = 0; i < elm.children.length; i++) {

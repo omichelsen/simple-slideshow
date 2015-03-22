@@ -1,6 +1,5 @@
 describe('simple-slideshow', function () {
-    var elm,
-        options = {timeout: 10};
+    var elm, options = {timeout: 10};
 
     function createElement(tag, props, child) {
         var elm = document.createElement(tag);
@@ -41,6 +40,10 @@ describe('simple-slideshow', function () {
         });
     });
 
+    it('should set height on container', function () {
+        expect(elm.style.height).toMatch(/\dpx$/);
+    });
+
     it('should change to next slide', function (done) {
         setTimeout(function () {
             expect(elm.querySelector('li:first-child').classList).not.toContain('show-animation');
@@ -56,5 +59,15 @@ describe('simple-slideshow', function () {
     it('should die violently if no children', function () {
         document.body.appendChild(createElement('ul', {'class': 'emptyElement'}));
         expect(function () { new SlideShow('.emptyElement'); }).toThrow();
+    });
+
+    it('should work without captions', function () {
+        var ul = createElement('ul', {'class': 'noCaptions'});
+        ul.appendChild(createElement('li', null, createElement('img', {alt: 'Alt0'})));
+        ul.appendChild(createElement('li', null, createElement('img', {alt: 'Alt1'})));
+        document.body.appendChild(ul);
+
+        elm = new SlideShow('.noCaptions');
+        expect(elm.querySelector('.caption')).toBeNull();
     });
 });
