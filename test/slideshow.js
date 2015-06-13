@@ -1,5 +1,6 @@
 describe('simple-slideshow', function () {
-    var elm, options = {timeout: 10};
+    var slsh, elm,
+        options = {timeout: 10};
 
     function createElement(tag, props, child) {
         var elm = document.createElement(tag);
@@ -15,10 +16,12 @@ describe('simple-slideshow', function () {
         ul.appendChild(createElement('li', null, createElement('img', {title: 'Title0', alt: 'Alt0'})));
         ul.appendChild(createElement('li', null, createElement('img', {title: 'Title1', alt: 'Alt1'})));
         document.body.appendChild(ul);
-        elm = new SlideShow('.testslides', options);
+        slsh = new SlideShow('.testslides', options);
+        elm = slsh.element;
     });
 
     afterEach(function () {
+        slsh.destroy();
         elm.parentNode.removeChild(elm);
         elm = null;
     });
