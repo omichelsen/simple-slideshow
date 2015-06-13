@@ -29,12 +29,12 @@
         this.element.classList.add('preload');
 
         // Set the dimensions of the container based on image size
-        var elmImg = elm.querySelector('img');
+        var elmImg = this.element.querySelector('img');
         var doResize = function () {
             this.element.style.height = elmImg.clientHeight + 'px';
-        };
+        }.bind(this);
         doResize();
-        window.addEventListener('resize', doResize.bind(this));
+        window.addEventListener('resize', doResize);
 
         // Create caption elements from image properties
         this._captions = [];
@@ -60,6 +60,7 @@
         }.bind(this));
 
         // Start the slidehshow
+        var index = 0;
         this._ticker = setInterval(function () {
             this.currentSlide.classList.remove('show-animation');
             index = (index + 1) % this.element.children.length;
