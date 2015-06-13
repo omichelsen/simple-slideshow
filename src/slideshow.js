@@ -76,6 +76,7 @@
             for (var i = 0; i < this._captions.length; i++) {
                 this._captions[i].parentNode.removeChild(this._captions[i]);
             }
+            this._captions = [];
         }
     }
 
