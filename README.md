@@ -44,10 +44,27 @@ Create a list of images, and the `title` and `alt` texts will be used as caption
 Initialize the slideshow:
 
 ```javascript
-var elm = new SlideShow('.slideshow', {timeout: 5000});
+var slsh = new SlideShow('.slideshow', {timeout: 5000});
 ```
 
 The optional setting `timeout` defines how many miliseconds to wait between slides.
+
+You can get a reference to the target element by the property `slsh.element`. 
+
+If used in an single-page app you can release all resources by calling `slsh.destroy()`.
+
+### Styling
+
+You should set a default size for the slideshow that matches your images. You can do this in CSS:
+
+```html
+<style>
+    .slideshow {
+        width: 1024px;
+        height: 768px;
+    }
+</style>
+```
 
 [travis-image]: https://img.shields.io/travis/omichelsen/simple-slideshow/master.svg
 [travis-url]: https://travis-ci.org/omichelsen/simple-slideshow
