@@ -19,52 +19,64 @@
             timeout: options && options.timeout || 5000
         };
 
-        var elm = document.querySelector(selector);
-        if (!(elm && elm.children.length)) {
+        this.element = document.querySelector(selector);
+        if (!(this.element && this.element.children.length)) {
             throw new Error('Element not found or no children.');
         }
 
         // Add slideshow classes
-        elm.classList.add('slideshow');
-        elm.classList.add('preload');
+        this.element.classList.add('slideshow');
+        this.element.classList.add('preload');
 
         // Set the dimensions of the container based on image size
         var elmImg = elm.querySelector('img');
         var doResize = function () {
-            elm.style.height = elmImg.clientHeight + 'px';
+            this.element.style.height = elmImg.clientHeight + 'px';
         };
         doResize();
-        window.addEventListener('resize', doResize);
+        window.addEventListener('resize', doResize.bind(this));
 
         // Create caption elements from image properties
-        for (var i = 0; i < elm.children.length; i++) {
-            var elmChild = elm.children[i];
+        this._captions = [];
+        for (var i = 0; i < this.element.children.length; i++) {
+            var elmChild = this.element.children[i];
             elmImg = elmChild.querySelector('img');
             if (elmImg && elmImg.title) {
                 var elmCaption = createElement('div', 'caption');
                 elmCaption.appendChild(createElement('span', 'title', elmImg.title));
                 elmCaption.appendChild(createElement('span', 'alt', elmImg.alt));
                 elmChild.appendChild(elmCaption);
+                this._captions.push(elmCaption);
             }
         }
 
         // Show the first slide
-        elm.children[0].classList.add('show-animation');
+        this.currentSlide = this.element.children[0];
+        this.currentSlide.classList.add('show-animation');
 
         // Remove preload class to enable transition animations
         setTimeout(function () {
-            elm.classList.remove('preload');
-        });
+            this.element.classList.remove('preload');
+        }.bind(this));
 
         // Start the slidehshow
-        var index = 0;
-        setInterval(function () {
-            elm.children[index].classList.remove('show-animation');
-            index = (index + 1) % elm.children.length;
-            elm.children[index].classList.add('show-animation');
-        }, options.timeout);
+        this._ticker = setInterval(function () {
+            this.currentSlide.classList.remove('show-animation');
+            index = (index + 1) % this.element.children.length;
+            this.currentSlide = this.element.children[index];
+            this.currentSlide.classList.add('show-animation');
+        }.bind(this), options.timeout);
+    }
 
-        return elm;
+    SlideShow.prototype = {
+        constructor: SlideShow,
+        destroy: function () {
+            clearInterval(this._ticker);
+            this.currentSlide.classList.remove('show-animation');
+            for (var i = 0; i < this._captions.length; i++) {
+                this._captions[i].parentNode.removeChild(this._captions[i]);
+            }
+        }
     }
 
     return SlideShow;
