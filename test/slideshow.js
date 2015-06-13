@@ -70,7 +70,18 @@ describe('simple-slideshow', function () {
         ul.appendChild(createElement('li', null, createElement('img', {alt: 'Alt1'})));
         document.body.appendChild(ul);
 
-        elm = new SlideShow('.noCaptions');
-        expect(elm.querySelector('.caption')).toBeNull();
+        var instance = new SlideShow('.noCaptions');
+
+        expect(instance.element.querySelector('.caption')).toBeNull();
+    });
+
+    it('should teardown added elements', function () {
+        slsh.destroy();
+        expect(elm.querySelectorAll('.caption').length).toEqual(0);
+    });
+
+    it('should remove active slide animation class', function () {
+        slsh.destroy();
+        expect(slsh.currentSlide.classList).not.toContain('show-animation');
     });
 });
