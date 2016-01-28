@@ -59,7 +59,7 @@
             this.element.classList.remove('preload');
         }.bind(this));
 
-        // Start the slidehshow
+        // Start the slideshow
         var index = 0;
         this._ticker = setInterval(function () {
             this.currentSlide.classList.remove('show-animation');
