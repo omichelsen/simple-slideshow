@@ -6,7 +6,7 @@
   "dependencies": {},
   "devDependencies": {
     "gulp": "^3.9.0",
-    "gulp-bump": "^1.0.0",
+    "gulp-bump": "^2.0.1",
     "gulp-less": "^3.0.3",
     "jasmine-core": "^2.4.1",
     "karma": "^0.13.19",
