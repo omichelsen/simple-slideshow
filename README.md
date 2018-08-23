@@ -1,5 +1,7 @@
 # simple-slideshow
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/omichelsen/simple-slideshow.svg)](https://greenkeeper.io/)
+
 [![Build Status][travis-image]][travis-url]
 [![Test Coverage][coveralls-image]][coveralls-url]
 
