@@ -1,20 +1,14 @@
-var gulp = require('gulp');
-var args = require('yargs').argv;
-var bump = require('gulp-bump');
-var less = require('gulp-less');
+const gulp = require('gulp')
+const pipeline = require('readable-stream').pipeline
+const rename = require('gulp-rename')
+const uglify = require('gulp-uglify')
 
-gulp.task('less', function () {
-    return gulp.src('src/*.less')
-        .pipe(less())
-        .pipe(gulp.dest('src'));
-});
+const js = () =>
+	pipeline(
+		gulp.src('src/*.js'),
+		uglify(),
+		rename({ suffix: '.min' }),
+		gulp.dest('dist')
+	)
 
-gulp.task('bump', function () {
-    return gulp.src('*.json')
-        .pipe(bump({type: args.type}))
-        .pipe(gulp.dest('.'));
-});
-
-gulp.task('default', function () {
-    gulp.start('less');
-});
+exports.default = js
